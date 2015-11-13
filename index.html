@@ -3,14 +3,36 @@
 <head>
 <script>
 function clickCounter() {
-    
+    if(typeof(Storage) !== "undefined") {
         if (localStorage.clickcount) {
             localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
         }
-       
         document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
-    
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
 }
+</script>
+<script>
+var ClickCounterViewModel = function() {
+    this.numberOfClicks = ko.observable(0);
+ 
+    this.registerClick = function() {
+        this.numberOfClicks(this.numberOfClicks() + 1);
+    };
+ 
+    this.resetClicks = function() {
+        this.numberOfClicks(0);
+    };
+ 
+    this.hasClickedTooManyTimes = ko.pureComputed(function() {
+        return this.numberOfClicks() >= 3;
+    }, this);
+};
+ 
+ko.applyBindings(new ClickCounterViewModel());
 </script>
 </head>
 <body>
@@ -18,5 +40,13 @@ function clickCounter() {
 <div id="result"></div>
 <p>Click the button to see the counter increase.</p>
 <p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+<div>You've clicked <span data-bind='text: numberOfClicks'>&nbsp;</span> times</div>
+ 
+<button data-bind='click: registerClick, disable: hasClickedTooManyTimes'>Click me</button>
+ 
+<div data-bind='visible: hasClickedTooManyTimes'>
+    That's too many clicks! Please stop before you wear out your fingers.
+    <button data-bind='click: resetClicks'>Reset clicks</button>
+</div>
 </body>
 </html>
