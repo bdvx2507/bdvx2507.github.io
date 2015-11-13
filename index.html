@@ -1,21 +1,25 @@
-<?php
-if(!file_exists('counter.txt')){
-  file_put_contents('counter.txt', '0');
-}
-if($_GET['click'] == 'yes'){
-  file_put_contents('counter.txt', ((int) file_get_contents('counter.txt')) + 1);
-  header('Location: ' . $_SERVER['SCRIPT_NAME']);
-  die;
-}
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <title>counter example</title>
+<script>
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+</script>
 </head>
 <body>
-  <h1><?php echo file_get_contents('counter.txt'); ?></h1>
-  <a href="?click=yes">clickMe</a>
+<p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<div id="result"></div>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
 </body>
 </html>
