@@ -1,10 +1,10 @@
 <?php
-if(!file_exists('counter.txt')){
-  file_put_contents('counter.txt', '0');
-}
-if($_GET['click'] == 'yes'){
-  file_put_contents('counter.txt', ((int) file_get_contents('counter.txt')) + 1);
-  header('Location: ' . $_SERVER['SCRIPT_NAME']);
-  die;
-}
+    $counts = ("counter.txt");
+    $hits = file($counts);
+    $hits[0] ++;
+    $fp = fopen($counts, "w");
+    fputs($fp , "$hits[0]");
+    fclose($fp);
+    header("Content-type: text/javascript");
+    echo "document.write('" . $hits[0] . "');";
 ?>
