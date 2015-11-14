@@ -1,24 +1,21 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Increment count when button is clicked</title>
-  </head>
-
-  <body>
-    <input type="button" value="Count" id="countButton" />
-
-    <p>The button was pressed <span id="displayCount">0</span> times.</p>
-
-    <script type="text/javascript">
-      var count = 0;
-      var button = document.getElementById("countButton");
-      var display = document.getElementById("displayCount");
-
-      button.onclick = function(){
-        count++;
-        display.innerHTML = count;
-      }
-    </script>
-  </body>
+<?php
+if(!file_exists('counter.txt')){
+  file_put_contents('counter.txt', '0');
+}
+if($_GET['click'] == 'yes'){
+  file_put_contents('counter.txt', ((int) file_get_contents('counter.txt')) + 1);
+  header('Location: ' . $_SERVER['SCRIPT_NAME']);
+  die;
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>counter example</title>
+</head>
+<body>
+  <h1><?php echo file_get_contents('counter.txt'); ?></h1>
+  <a href="?click=yes">clickMe</a>
+</body>
 </html>
