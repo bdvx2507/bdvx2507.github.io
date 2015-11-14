@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,3 +10,18 @@
   <a href="?click=yes">clickMe</a>
 </body>
 </html>
+=======
+<div>You've clicked <span data-bind="text : NumberOfClicks"></span> times</div>
+<button data-bind="click : function() {executeOnServer(viewModel, &#39;/ClickCounter/RegisterClick&#39;);},disable : HasClickedTooManyTimes">Click me</button>
+<div data-bind="visible : HasClickedTooManyTimes">
+  That's too many clicks! Please stop before you wear out your fingers.
+  <button data-bind="click : function() {executeOnServer(viewModel, &#39;/ClickCounter/ResetClicks&#39;);}">Reset clicks</button>
+</div>
+
+<script type="text/javascript"> 
+var viewModelJs = {"NumberOfClicks":0};
+var viewModel = ko.mapping.fromJS(viewModelJs); 
+viewModel.HasClickedTooManyTimes = ko.computed(function() { try { return ((this.NumberOfClicks() < 3) == false)} catch(e) { return null; }  ;}, viewModel);
+ko.applyBindings(viewModel);
+</script>
+>>>>>>> origin/master
