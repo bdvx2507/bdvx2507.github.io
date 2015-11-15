@@ -14,6 +14,12 @@
 <body>
 <img src="Kickless.jpg"/>
 <img src="Michael.jpg"/>
+<h3>1 Like = 1 Kick</h3>
+<!-- Put this div tag to the place, where the Like block will be -->
+<div id="vk_like" class="box"></div>
+<script type="text/javascript">
+VK.Widgets.Like("vk_like", {type: "button", height: 24});
+</script>
     <div class="box">    
         <label for="qty"><abbr title="Quantity">Qty</abbr></label>
         <input id="qty" value="46" />
@@ -21,11 +27,6 @@
         <button id="up" onclick="modify_qty(1)">+1</button>   -->
     </div>
 
-<h3>1 Like = 1 Kick</h3>
-<!-- Put this div tag to the place, where the Like block will be -->
-<div id="vk_like"></div>
-<script type="text/javascript">
-VK.Widgets.Like("vk_like", {type: "button", height: 24});
-</script>
+
 </body>
 </html>
