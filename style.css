@@ -40,7 +40,7 @@ button:hover, button:active, button:focus {
 	background-color: #444;
 	color: #C4BE92;
     text-align: center;
-    width: 100px;
+    width: 20px;
 	/* rounded corners */
     -webkit-border-radius: 12px;
     border-radius: 12px; 
