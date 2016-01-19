@@ -40,13 +40,12 @@ button:hover, button:active, button:focus {
 	background-color: #444;
 	color: #C4BE92;
     text-align: center;
-
+    width: 100px;
 	/* rounded corners */
     -webkit-border-radius: 12px;
     border-radius: 12px; 
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
     padding: .20em .20em 1em;
-    width: 20px;
 	margin: 0 auto;	
   	-webkit-box-shadow: 100px 100px 20px 100px #000;
     box-shadow: 100px 100px 20px 100px #000;
