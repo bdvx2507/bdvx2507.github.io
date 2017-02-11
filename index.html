@@ -56,13 +56,7 @@
 	<!-- Put this div tag to the place, where Auth block will be -->
 <div id="vk_auth"></div>
 <script type="text/javascript">
-	const CALLBACK_BLANK = 'https://oauth.vk.com/blank.html';
-    const AUTHORIZE_URL = 'https://oauth.vk.com/authorize?client_id={client_id}&scope={scope}&redirect_uri={redirect_uri}&display={display}&v=5.0&response_type={response_type}';
-    const GET_TOKEN_URL = 'https://oauth.vk.com/access_token?client_id={client_id}&client_secret={client_secret}&code={code}&redirect_uri={redirect_uri}';
-    const METHOD_URL = 'https://api.vk.com/method/';
-
-VK.Widgets.Auth("vk_auth", {width: "200px"});
-	
+VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: 'http://bdvx2507.github.io'});
 </script>
 	
 	  
