@@ -1,9 +1,20 @@
+<!doctype html>
+<!--
+
+ 
+ https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token
+ -->
 <html>
-<head>
-<script type="text/javascript" src="script.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css"> 
-
-
+  <head>
+    <script type="text/javascript">
+  VK.init({apiId: 5149232});
+</script>
+  <script src="jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load(" https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token"); 
+    });
+    </script> 
 <script type="text/javascript" src="//vk.com/js/api/openapi.js?139"></script>
 
 <script type="text/javascript">
@@ -11,15 +22,79 @@
 </script>
 
 
-</head>
-<body>
 
+    <title>Getting Started Extension's Popup</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+      }
+      #status {
+        /* avoid an excessively wide status text */
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
+      }
+    </style>
 
-  
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+   <!-- <script src="popup.js"></script>-->
+  </head>
+  <body>
+ <!-- Put this div tag to the place, where Auth block will be -->
 <div id="vk_auth"></div>
 <script type="text/javascript">
 VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: '/dev/Login'});
 </script>
 
-</body>
+<!-- Put this div tag to the place, where Auth block will be -->
+    <div id="status"></div>
+    <img id="image-result" src="icon.png" hidden>
+	<button>JMI SUDA</button>
+	<div>qwerty
+	</div>
+	
+	<script type="text/javascript" charset="utf-8" >
+window.onload = (function() { // когда загрузится вся страница
+VK.init(function() { // инициализируем Vk API
+
+// узнаём flashVars, переданные приложению GET запросом. Сохраняем их в переменную flashVars
+var parts=document.location.search.substr(1).split("&");
+var flashVars={}, curr;
+for (i=0; i<parts.length; i++) {
+curr = parts[i].split('=');
+// записываем в массив flashVars значения. Например: flashVars['viewer_id'] = 1;
+flashVars[curr[0]] = curr[1];
+}
+
+// получаем viewer_id из полученных переменных
+var viewer_id = flashVars['viewer_id'];
+//кол-во записей
+var count = 10;
+
+// выполняем запрос по методу audio.get http://vkontakte.ru/developers.php?o=-1&p=audio.get
+VK.api("audio.get", {uid:viewer_id,count:count}, function(data) {
+//обрабатываем json ответ
+var obj_respone = eval('('+ data.response +')');;
+//выводим в цикле
+for(var i=0; i<obj_respone.length; i++)
+{
+document.getElementById('tracks').innerHTML ="<a href="+obj_respone[i].url+">"obj_respone[i].artist +'-'+obj_respone[i].title+"</a><br />";
+}
+});
+
+});
+
+});
+</script>
+	
+
+  </body>
 </html>
+
