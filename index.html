@@ -6,7 +6,7 @@
  -->
 <html>
   <head>
-   
+   <script src="http://www.w3schools.com/lib/w3data.js"></script>
   <script src="jquery.js"></script> 
     <script> 
     $(function(){
@@ -105,6 +105,12 @@ function handleResponse() {
 		  $("#testLoad").load("https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token");</script>    
 <div id="testLoad"></div>
 
+	  <div w3-include-html="content.html"></div> 
+
+<script>
+w3IncludeHTML();
+</script>
+	  
   </body>
 </html>
 
