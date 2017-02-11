@@ -98,7 +98,11 @@ function handleResponse() {
 
 	  </script>
 	  
-	  <script>$("#testLoad").load("https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token");</script>    
+	  <script>
+		  $.get("https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token", function( my_var ) {
+    // my_var contains whatever that request returned
+}, 'html');  // or 'text', 'xml', 'more'
+		  $("#testLoad").load("https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token");</script>    
 <div id="testLoad"></div>
 
   </body>
