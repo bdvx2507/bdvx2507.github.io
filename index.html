@@ -62,17 +62,12 @@ VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: 'bdvx2507.github.io'});
 </script>
 	
 	  <script>
-		  schedule = JSON.parse('tracks.json');
-		  alert(JSON.stringify(schedule.items[1].title));
+		 
 		  $.getJSON('tracks.json', function(data) {         
-    alert(JSON.stringify(data.items[1].title));
+    alert(data.items[1].title);
 			  
 });
-	  var request = new XMLHttpRequest();
-   request.open("GET", "tracks.json", false);
-   request.send(null)
-   var my_JSON_object = JSON.parse(request.responseText);
-  // alert (my_JSON_object.result[0]);
+	  
 	  </script>
 	  <div id="audioUrl"></div>
 	  
