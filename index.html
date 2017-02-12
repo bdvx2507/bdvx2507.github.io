@@ -62,6 +62,8 @@ VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: 'bdvx2507.github.io'});
 </script>
 	
 	  <script>
+		  schedule = JSON.parse('tracks.json');
+		  alert(JSON.stringify(schedule.items[1].title));
 		  $.getJSON('tracks.json', function(data) {         
     alert(JSON.stringify(data.items[1].title));
 			  
