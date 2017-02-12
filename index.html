@@ -50,7 +50,7 @@
 <!-- Put this div tag to the place, where Auth block will be -->
     <div id="status"></div>
     <img id="image-result" src="icon.png" hidden>
-	<button >JMI SUDA</button>
+	
 	
 	  
 	
@@ -82,11 +82,27 @@ a.style.display = 'none';
 document.body.appendChild(a);
 a.click();
 delete a;
-	  
+	  function saveFile(url) {
+  // Get file name from url.
+  var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
+  var xhr = new XMLHttpRequest();
+  xhr.responseType = 'blob';
+  xhr.onload = function() {
+    var a = document.createElement('a');
+    a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
+    a.download = filename; // Set the file name.
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    delete a;
+  };
+  xhr.open('GET', url);
+  xhr.send();
+}
 	  </script>
 	  <div id="audioUrl"></div>
 	  <iframe id="my_iframe" style="display:none;"></iframe>
-	  
+	  <button onclick="saveFile('https://cs1-49v4.vk-cdn.net/p3/4500c1a20812cf.mp3')">JMI SUDA</button>
   </body>
 </html>
 
