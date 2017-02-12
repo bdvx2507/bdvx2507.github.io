@@ -52,6 +52,17 @@
     <img id="image-result" src="icon.png" hidden>
 	<button onclick="window.open('https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">JMI SUDA</button>
 	
+	  
+	  <script>
+	  VK.api("audio.get", {owner_id:'155495144',need_user:'0'}, function(data) {
+//обрабатываем json ответ
+var obj_respone =  data.response ;
+//выводим в цикле
+for(var i=0; i<data.response.length; i++){
+document.getElementById('tracks').innerHTML+="<a href="+data.response[i].url+">"+data.response[i].artist +'-'+data.response[i].title+"</a><br />";
+}
+});
+	  </script>
 	
 	<!-- Put this div tag to the place, where Auth block will be -->
 <div id="vk_auth"></div>
@@ -60,50 +71,7 @@ VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: 'http://bdvx2507.github.io'
 </script>
 	
 	  
-	  <script type="text/javascript">
-
-function createRequestObject() {
-    var obj;
-    var browser = navigator.appName;
-    if (browser == "Microsoft Internet Explorer") {
-        obj = new ActiveXObject("Microsoft.XMLHTTP");
-    } else {
-        obj = new XMLHttpRequest();
-    }
-    return obj;
-}
-
-function sendReq(req) {   
-    var http = createRequestObject();
-    http.open('get', req);
-    http.onreadystatechange = handleResponse;
-    http.send(null);
-}
-
-function handleResponse() {    
-    if (http.readyState == 4) {
-        var response = http.responseText;
-        document.getElementById('setADivWithAnIDWhereYouWantIt').innerHTML=response;
-    }
-}
-
- sendReq('https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token');
-
-
-	  </script>
 	  
-	  <script>
-		  $.get("https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token", function( my_var ) {
-    // my_var contains whatever that request returned
-}, 'html');  // or 'text', 'xml', 'more'
-		  $("#testLoad").load("https://oauth.vk.com/authorize?client_id=5149232&scope=notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline&redirect_uri=http://api.vk.com/blank.html&display=page&response_type=token");</script>    
-<div id="testLoad"></div>
-
-	  <div w3-include-html="content.html"></div> 
-
-<script>
-w3IncludeHTML();
-</script>
 	  
   </body>
 </html>
