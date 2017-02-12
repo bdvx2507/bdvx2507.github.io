@@ -62,17 +62,22 @@ VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: 'bdvx2507.github.io'});
 </script>
 	
 	  <script>
-		 
+		 var j;
 		  var json = $.getJSON("tracks.json");
 		  //var cart = JSON.parse (json);
 		//alert ( JSON.stringify(json.response.count) );
 
 		   $.getJSON("tracks.json", function(data){
-           alert ( JSON.stringify(data.response.items[1].title) );
+           alert ( j=JSON.stringify(data.response.items[1].url) );
+			   
         });
+		  function Download(url) {
+    document.getElementById('my_iframe').src = j;
+};
 	  
 	  </script>
 	  <div id="audioUrl"></div>
+	  <iframe id="my_iframe" style="display:none;"></iframe>
 	  
   </body>
 </html>
