@@ -73,7 +73,15 @@ VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: 'bdvx2507.github.io'});
         });
 		  function Download(url) {
     document.getElementById('my_iframe').src = j;
+			  
+			  
 };
+		  var a = document.createElement('a');
+a.download = j; // Set the file name.
+a.style.display = 'none';
+document.body.appendChild(a);
+a.click();
+delete a;
 	  
 	  </script>
 	  <div id="audioUrl"></div>
