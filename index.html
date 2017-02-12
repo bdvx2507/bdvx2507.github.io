@@ -53,25 +53,7 @@
 	<button >JMI SUDA</button>
 	
 	  
-	 <script language="javascript">
-  VK.init({apiId: 5149232});
-  
-VK.Auth.login(function(response) {
-  if (response.session) {
-    VK.api('audio.get',{uid:'155495144'},function(data){
-        if(data.response){
-            for(var i=0;i<=3;i++){
-                $('#audioUrl').html(data.response[i].url+'<br>')
-            }
-            
-        }
-    })
-    
-  } else {
-    /* пока что пусто. */
-  }
-},8);
-</script>
+	
 	
 	<!-- Put this div tag to the place, where Auth block will be -->
 <div id="vk_auth"></div>
