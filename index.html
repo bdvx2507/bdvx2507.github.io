@@ -64,7 +64,7 @@ VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: 'bdvx2507.github.io'});
 	  <script>
 		 
 		   $.getJSON("tracks.json", function(result){
-            $.each(result, function(i, field){
+            $.each(JSON.stringify(result), function(i, field){
                 $("div").append(field + " ");
             });
         });
