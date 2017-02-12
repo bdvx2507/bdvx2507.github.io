@@ -62,6 +62,9 @@ VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: 'bdvx2507.github.io'});
 </script>
 	
 	  <script>
+		  $.getJSON('../../data/file.json', function(data) {         
+    alert(data);
+});
 	  var request = new XMLHttpRequest();
    request.open("GET", "tracks.json", false);
    request.send(null)
