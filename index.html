@@ -63,10 +63,11 @@ VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: 'bdvx2507.github.io'});
 	
 	  <script>
 		 
-		  $.getJSON('tracks.json', function(data) {         
-    alert(data.items[1].title);
-			  
-});
+		   $.getJSON("tracks.json", function(result){
+            $.each(result, function(i, field){
+                $("div").append(field + " ");
+            });
+        });
 	  
 	  </script>
 	  <div id="audioUrl"></div>
